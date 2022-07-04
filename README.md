@@ -5,8 +5,9 @@
 Vue2，Vuex，Axios，Vue-cookie，Js-cookie，Vue-router，nanoid，mysql，express
 成品网站yuiyide.top
 请自行开启服务器链接数据库（文件server里app.js）
+内容数据存放在数据库中
 ```
-###内容数据存放在数据库中
+
 ###login数据库
 ![image](https://user-images.githubusercontent.com/57654870/177140911-b1843fc8-427b-4390-9195-dcbac3045e12.png)
 ###mytest数据库
