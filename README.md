@@ -3,6 +3,8 @@
 ## 环境
 ```
 Vue2，Vuex，Axios，Vue-cookie，Js-cookie，Vue-router，nanoid，mysql，express
+成品网站yuiyi.top
+请自行开启服务器链接数据库（文件server里app.js）
 ```
 
 ### 第一个从0开发的网站
