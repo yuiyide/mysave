@@ -14,7 +14,7 @@ Vue2，Vuex，Axios，Vue-cookie，Js-cookie，Vue-router，nanoid，mysql，exp
 ![image](https://user-images.githubusercontent.com/57654870/177138907-13b08f39-10fa-48b5-9af4-e241c49a3a48.png)
 ###登录后使用
 ![QQ截图20220704184325](https://user-images.githubusercontent.com/57654870/177139518-24660b41-12ae-413a-8df3-d17b1346aedc.png)
-![QQ截图20220704184723](https://user-images.githubusercontent.com/57654870/177140010-750a98d7-76a5-45f5-aca9-ae120ae1d2d0.png)
+![QQ截图20220704184723](https://user-images.githubusercontent.com/57654870/177248987-b7911365-e8e0-4052-a923-28f5596af076.png)
 ###login数据库
 ![image](https://user-images.githubusercontent.com/57654870/177140911-b1843fc8-427b-4390-9195-dcbac3045e12.png)
 ###mytest数据库
