@@ -5,19 +5,20 @@ Vue2全家桶+Express+cookie+token+proxy+Mysql
 
 ## sign
 ```
-![resign](https://user-images.githubusercontent.com/57654870/184617048-77bc0f89-2cec-4693-ae4a-8bc748b66ac0.png)
+![resign](https://user-images.githubusercontent.com/57654870/184617389-59044415-f38d-497c-bcd6-ad7954816a41.png)
+
 
 ```
 
 ### 内容
 ```
-![content](https://user-images.githubusercontent.com/57654870/184617067-a406b8d0-8b4c-443e-9403-13f61a5ba8e3.png)
+![content](https://user-images.githubusercontent.com/57654870/184617410-389ec081-6594-4a63-8d2d-fe7ac72b155c.png)
 
 ```
 
 ### 文本
 ```
-![itemcontent](https://user-images.githubusercontent.com/57654870/184617113-e747acd3-029a-4fba-8d6b-bf489115486a.png)
+![itemcontent](https://user-images.githubusercontent.com/57654870/184617422-1eeee31b-46ec-4e59-9f11-3583910d7795.png)
 
 ```
 
