@@ -1,5 +1,5 @@
 Vue2全家桶+Express+cookie+token+proxy+Mysql
-个人开发一个功能较为完善的笔记网站
+个人开发一个功能较为完善的笔记网站，具有添加删除导航等功能
 # Login
 ![login](https://user-images.githubusercontent.com/57654870/184617015-8e9ed39f-7048-4dfe-9561-43fdd7b626a7.png)
 
