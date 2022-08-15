@@ -1,5 +1,5 @@
 <template>
-      <div >
+      <div>
         <select id="sevalue" >
             <option v-for="item in sel" :key="item.item" :value="item.item">{{item.item}}</option>
             <!-- <option value="Js">Js</option>
@@ -20,11 +20,13 @@
             <button @click="del">确定</button>
             <button @click="delchoice = false">取消</button>
         </div>
+        <logout class="logout"></logout>
     </div>
 </template>
 
 <script>
-import {addItemto,DelAsideitem} from '../js/dbget'
+import {addItemto,DelAsideitem} from '../utils/dbget'
+import logout from './logout.vue'
 export default {
     name:'TopList',
     data(){
@@ -32,8 +34,12 @@ export default {
             sel:[],
             itemvalue:"",
             addchoice:false,
-            delchoice:false
+            delchoice:false,
+            exits:false
         }
+    },
+    components:{
+        logout
     },
     mounted(){
         this.$bus.$on('hlist',(data)=>this.sel=data)
@@ -42,7 +48,7 @@ export default {
         AddAsideitem(){
             this.addchoice = false;
             let sevalue = document.getElementById('sevalue').value
-            addItemto(this.itemvalue,sevalue)
+            // addItemto(this.itemvalue,sevalue)
             let yui =[]
             yui.push(this.itemvalue)
             yui.push(sevalue)
@@ -59,7 +65,6 @@ export default {
             this.delchoice = false;
             this.choice = "删除"
             let sevalue = document.getElementById('sevalue').value
-            console.log(this.itemvalue)
             DelAsideitem(this.itemvalue,sevalue)
 
             let yui =[]
@@ -72,6 +77,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.logout{
+    float:right;
+    margin-right: 50px;
+    margin-top: 10px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <top-list style="position:fixed"></top-list>
+        <top-list style="position:fixed,display:flex"></top-list>
         <aside-menu></aside-menu>
     </div>
 </template>

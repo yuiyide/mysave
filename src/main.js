@@ -13,17 +13,19 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 
 router.beforeEach((to,from,next)=>{
-  
+  console.log(to.name)
   // store.commit('getToken')
   // const token = store.state.user.token
   // console.log(token)
   // console.log(to.name)
   // console.log($cookies.get("token"))
-  if(to.name === 'register'){
+  if(to.name == 'login' || to.name == 'register'){
     next()
-  }else if($cookies.get("token") === null && to.name !== 'login' ){
+  }else if($cookies.get("token") == null ){
     next({name:'login'})
-  }else{
+  }else if( to.name == null && $cookies.get("token") != null){
+    next({name:'home'})
+  }else {
     next()
   }
 })

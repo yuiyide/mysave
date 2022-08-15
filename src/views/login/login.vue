@@ -10,7 +10,7 @@
         <div class="itemc">
             <!-- <i class="fa fa-search" style="font-size:24px"></i>   pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g"-->
             <i class="fa fa-key" style="font-size:24px"></i>
-            <input type="password" v-model="password"  placeholder="Password">
+            <input type="password" v-model="password"  placeholder="Password" v-on:keyup.enter="geilogin">
         </div>
         <button @click="geilogin">Login</button>
         <button @click="register">register</button>
@@ -21,7 +21,7 @@
 <script>
 import "../../font-awesome-4.7.0/css/font-awesome.min.css"
 
-import {Loginc} from "../../js/dbget"
+import {Loginc} from "../../utils/dbget"
 export default {
     data(){
         return{

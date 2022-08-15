@@ -11,7 +11,7 @@
                 密&emsp;码：<input type="password" v-model="pass">
                 </div>
                 <div>
-                邀请码：<input type="text" v-model="invite">
+                邀请码：<input type="text" v-model="invite" @keydown.enter="register">
                 </div>
               </div>
           </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {RegisterUser} from '../../js/dbget'
+import {RegisterUser} from '../../utils/dbget'
 export default {
   data(){
     return{

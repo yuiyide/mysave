@@ -1,6 +1,6 @@
 <template>
-    <div id="titleid">
-        <div style="height:100px">
+    <div id="titleid" style="height:auto">
+        <div style="height:auto;margin-bottom: 50px;">
             <textarea id="title" style=" width: 750px; height: 50px;font-size: 30px;resize: vertical; text-align: center;"  placeholder="问题" v-model="title" ></textarea>
             <textarea id="titlect" style=" width: 750px; height: 200px;font-size: 20px;resize: vertical;" contenteditable="true" placeholder="内容" v-model="titlect"></textarea>
             <!-- <textarea style=" width: 600px; height: 150px;"></textarea> -->
@@ -11,17 +11,17 @@
                 <button @click="sumbs">确定</button>
                 <button @click="sub = false">取消</button>
             </div>
+                <!-- V-for倒序输出 .slice().reverse() -->
+                <div  v-for="item in Asidecontent" :key="item.id">
+                    <textarea class="yuiid" :id="item.text" :style="{width:750+'px',height:item.titlecth1+'px',fontSize:30+'px',resize:'vertical',textAlign:'center'}" v-model="item.text"></textarea>
+                    <textarea class="yuiidct" :id="item.id" :style="{width:750+'px',height:item.titlecth2+'px',fontSize:20+'px',resize:'vertical'}" contenteditable="true" v-model="item.content"></textarea>
+                    <!-- getcontent(item.id,item.text,item.content,item.titlecth1,item.titlecth2) -->
+                    <!-- <textarea style=" width: 600px; height: 150px;"></textarea> -->
+                    <!-- <script src="./js/addtitle.js"></script> -->
+                    <button class="titlebt" @click="updatecontidd(item.text,item.id),upd = true" >修改</button>
+                    <button class="titlebt" @click="delidd(item.id),del = true" >删除</button>
+                </div>
 
-            <!-- V-for倒序输出 .slice().reverse() -->
-            <div  v-for="item in Asidecontent" :key="item.id">
-                <textarea class="yuiid" :id="item.text" :style="{width:750+'px',height:item.titlecth1+'px',fontSize:30+'px',resize:'vertical',textAlign:'center'}" v-model="item.text"></textarea>
-                <textarea class="yuiidct" :id="item.id" :style="{width:750+'px',height:item.titlecth2+'px',fontSize:20+'px',resize:'vertical'}" contenteditable="true" v-model="item.content"></textarea>
-                <!-- getcontent(item.id,item.text,item.content,item.titlecth1,item.titlecth2) -->
-                <!-- <textarea style=" width: 600px; height: 150px;"></textarea> -->
-                <!-- <script src="./js/addtitle.js"></script> -->
-                <button class="titlebt" @click="updatecontidd(item.text,item.id),upd = true" >修改</button>
-                <button class="titlebt" @click="delidd(item.id),del = true" >删除</button>
-            </div>
             <div  class="delcon" v-if="del">
                 <h4 style="margin-left:15%">是否删除</h4>
                 <button @click="dell(delid),del = false">确定</button>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import {writetext,delcontent,Updatecontent} from '../../js/dbget'
+import {writetext,delcontent,Updatecontent} from '../../utils/dbget'
 import { nanoid } from 'nanoid'
 export default {
     name:'MyContent',

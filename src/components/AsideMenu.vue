@@ -52,9 +52,7 @@
 
 <script>
 import Mycontent from '../views/content/Mycontent.vue'
-import {GetAside, GetItem,GetContent,Addaside,Delaside,Delasideitems} from "../js/dbget"
-import {getcontent} from "../js/addtitle"
-import jsCookie from 'js-cookie'
+import {GetAside, GetItem,GetContent,Addaside,Delaside,addItemto} from "../utils/dbget"
 import "../font-awesome-4.7.0/css/font-awesome.min.css"
 // import axios from "axios";
 export default {
@@ -67,7 +65,7 @@ export default {
             jiajia:false,
             jianjian:false,
             Addasidevalue:"",
-
+            exits:true
         }
     },
     methods:{
@@ -102,20 +100,29 @@ export default {
         },
         subAddasidevalue(){
             this.jiajia = !this.jiajia;
+            this.div1.forEach(element => {
+                if(this.Addasidevalue == element.item){
+                    this.exits = false
+                }
+            });
+            if(this.exits){
+                if(this.div1 === ""){
+                    this.div1 = [{item:this.Addasidevalue}]
+                    this.$bus.$emit('hlist',this.div1)
+                }else{
+                    this.div1.push({item:this.Addasidevalue})
+                }
 
-            if(this.div1 === ""){
-                this.div1 = [{item:this.Addasidevalue}]
-                this.$bus.$emit('hlist',this.div1)
+                //设置一个空值，让后面加asideitem时识别位置
+                this.$set(this.Asideitem,this.Addasidevalue,"")
+                console.log("ss",this.Asideitem)
+                Addaside(this.Addasidevalue)
+                this.$store.commit('addrouter',this.Addasidevalue)
+                this.Addasidevalue =""
             }else{
-                this.div1.push({item:this.Addasidevalue})
+                alert('已存在一样的Aside')
             }
-
-            //设置一个空值，让后面加asideitem时识别位置
-            this.$set(this.Asideitem,this.Addasidevalue,"")
-            console.log("ss",this.Asideitem)
-            Addaside(this.Addasidevalue)
-            this.$store.commit('addrouter',this.Addasidevalue)
-            this.Addasidevalue =""
+            this.exits = true
         },
         subDelasidevalue(){
             this.jianjian = !this.jianjian;
@@ -169,7 +176,7 @@ export default {
                     
                     //在vue对象里添加对象不能用传统的 this.Asideitem.yui ={....} 因为在Vue v-for中需要getting获取数据所以用this.$set(this.Asideitem,yui,res.data)
                    this.$set(this.Asideitem,yui,res.data)
-                     console.log(this.Asideitem)
+                    //  console.log(this.Asideitem)
                    
                     // console.log(this.Asideitem.Css)
                     // this.Asideitem.Css.push({item:yui})
@@ -207,31 +214,50 @@ export default {
 
        
         //在Aside添加一个子
-        this.$bus.$on('Aasideitem',async (data)=>{
+        this.$bus.$on('Aasideitem',(data)=>{
             // console.log(data)
             if(this.Asideitem[`${data[1]}`] === ""){
+                addItemto(data[0],data[1])
                 this.Asideitem[data[1]] = [{item:data[0]}]
                 this.$store.commit('addrouter',data[0])
             }else{
-                this.Asideitem[data[1]].push({item:data[0]})
-                // console.log(this.Asideitem[data[1]])
-                this.$store.commit('addrouter',data[0])
+                this.Asideitem[data[1]].forEach(element => {
+                    if(data[0] == element.item){
+                        this.exits = false
+                    }
+                });
+                if(this.exits){
+                    console.log('成功加入')
+                    addItemto(data[0],data[1])
+                    this.Asideitem[data[1]].push({item:data[0]})
+                    // console.log(this.Asideitem[data[1]])
+                    this.$store.commit('addrouter',data[0])
+                    // this.$router.addRoute('home',{
+                    //             path:`/${this.itemvalue}`,
+                    //             name:`${this.itemvalue}`,
+                    //             component: () => import(/* webpackChunkName: "about" */ '../views/content/Mycontent.vue')
+                    //     })
+                }else{
+                    alert('已存在一样的值')
+                }
+                this.exits = true
             }
          
             
             // console.log(this.Asideitem[`${data[1]}`].length) 
-        })
+        }),
         // addtitle.GetAside(AsideBox,AsideBoxItem);
         //在Aside删除一个子
         this.$bus.$on('Dasideitem',(data)=>{
             if(data[0] !== ""){
                 this.Asideitem[data[1]] = this.Asideitem[data[1]].filter((item)=>{
-                console.log(item.item)
                 return item.item !== data[0]
                 })
             }
             // console.log(this.Asideitem[data[1]] )
         })
+
+
     },
 }
 </script>

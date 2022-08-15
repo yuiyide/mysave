@@ -32,12 +32,12 @@ data(){
   }
 },
 methods:{
-    gotop(){
+  gotop(){
         window.scrollTo(0,0);
     },
 	gobot(){
   		 window.scrollTo(0,50000);
-	}
+	},
 }
   
 }  
